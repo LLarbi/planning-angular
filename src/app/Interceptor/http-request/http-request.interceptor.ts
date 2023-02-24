@@ -3,7 +3,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HTTP_INTERCEPTORS
+  HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {SessionStorageService} from "../../services/session-storage/session-storage.service";
@@ -16,16 +16,14 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   ) {
   }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${sessionStorage['getUser'].token}`,
-      },
-    });
+    const token: object | undefined = this.sessionStorage.getUser().token
+
+    if (req.url.startsWith('http://localhost:8080') && token != undefined) {
+      req = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`),
+      });
+    }
 
     return next.handle(req);
   }
 }
-
-export const httpInterceptorProviders = [
-  { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
-];

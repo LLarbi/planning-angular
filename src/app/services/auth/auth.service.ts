@@ -10,7 +10,7 @@ export class AuthService {
   private url: string = "http://localhost:8080/api/auth/login";
 
   private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', "Access-Control-Allow-Origin" : "http://localhost:4200/"})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json'})
   };
 
   constructor(
@@ -18,8 +18,8 @@ export class AuthService {
   ) { }
 
 
-  post(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.url,{email, password} , this.httpOptions);
+  post(username: string, password: string): Observable<any> {
+    return this.http.post<any>(this.url,{username, password} , this.httpOptions);
   }
 
 

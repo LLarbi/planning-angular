@@ -13,8 +13,10 @@ import { HttpRequestInterceptor } from './Interceptor/http-request/http-request.
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { AvatarSelectComponent } from './components/avatar-select/avatar-select.component';
+import { SharePlanningComponent } from './pages/share-planning/share-planning.component';
 import { PlanningsSharedComponent } from './pages/plannings-shared/plannings-shared.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbToast } from '@ng-bootstrap/ng-bootstrap';
+import { SearchUserComponent } from './components/search-user/search-user.component';
 
 
 @NgModule({
@@ -25,14 +27,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     InscriptionComponent,
     AvatarSelectComponent,
-    PlanningsSharedComponent
+    SharePlanningComponent,
+    PlanningsSharedComponent,
+    SearchUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    NgbToast
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },

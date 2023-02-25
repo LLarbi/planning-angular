@@ -11,6 +11,8 @@ import { MyPlanningsComponent } from './pages/my-plannings/my-plannings.componen
 
 import { HttpRequestInterceptor } from './Interceptor/http-request/http-request.interceptor';
 import { NavbarComponent } from './pages/navbar/navbar.component';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { AvatarSelectComponent } from './components/avatar-select/avatar-select.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     AppComponent,
     AuthComponent,
     MyPlanningsComponent,
-    NavbarComponent
+    NavbarComponent,
+    InscriptionComponent,
+    AvatarSelectComponent
   ],
   imports: [
     BrowserModule,

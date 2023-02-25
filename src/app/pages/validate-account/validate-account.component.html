@@ -1,0 +1,12 @@
+
+<div *ngIf="result" class="bg-success text-white">
+  <h1>Votre compte est valider : </h1>
+  <img src="{{result.avatar}}" alt="Avatar de {{result.pseudo}}">
+<p >{{result.pseudo}}</p>
+</div>
+
+<div *ngIf="error" class="bg-danger text-white">
+
+  <p>{{error.status}}</p>
+  <p>Impossible de valider votre compte</p>
+</div>

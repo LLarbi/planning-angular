@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const URL = 'http://localhost:8080/api/userplanning/myplannings';
+const URL = 'http://localhost:8080/api/userplanning';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +12,6 @@ export class PlanningsService {
   ) { }
 
   getMyPlannings(): Observable<any> {
-    return this.http.get<any>(URL)
+    return this.http.get<any>(`${URL}/myplannings`)
   }
 }

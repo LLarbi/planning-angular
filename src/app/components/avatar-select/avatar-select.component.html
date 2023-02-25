@@ -1,0 +1,6 @@
+<div *ngFor="let random of randomNumbers">
+  <label>
+    <input type="radio" name="value" [value]="'https://robohash.org/' + random + '.png'" [(ngModel)]="selectedAvatar" (ngModelChange)="onSelect()">
+    <img src="https://robohash.org/{{random}}.png" alt="Avatar {{random}}">
+  </label>
+</div>

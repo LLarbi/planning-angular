@@ -5,11 +5,13 @@ import {MyPlanningsComponent} from "./pages/my-plannings/my-plannings.component"
 import {IsSignInGuard} from "./guards/is-sign-in.guard";
 import {InscriptionComponent} from "./pages/inscription/inscription.component";
 import {PlanningsSharedComponent} from "./pages/plannings-shared/plannings-shared.component";
+import {SharePlanningComponent} from "./pages/share-planning/share-planning.component";
 
 
 const routes: Routes = [
   {path: 'my-plannings', component: MyPlanningsComponent, canActivate: [IsSignInGuard]},
   {path: 'plannings-shared', component: PlanningsSharedComponent, canActivate: [IsSignInGuard]},
+  {path: 'share-planning', component: SharePlanningComponent, canActivate: [IsSignInGuard]},
   {path: 'login', component: AuthComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: '**', redirectTo: "/my-plannings"},

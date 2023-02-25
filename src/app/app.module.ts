@@ -17,6 +17,7 @@ import { SharePlanningComponent } from './pages/share-planning/share-planning.co
 import { PlanningsSharedComponent } from './pages/plannings-shared/plannings-shared.component';
 import { NgbModule, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { SearchUserComponent } from './components/search-user/search-user.component';
+import { ValidateAccountComponent } from './pages/validate-account/validate-account.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SearchUserComponent } from './components/search-user/search-user.compon
     AvatarSelectComponent,
     SharePlanningComponent,
     PlanningsSharedComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    ValidateAccountComponent
   ],
   imports: [
     BrowserModule,

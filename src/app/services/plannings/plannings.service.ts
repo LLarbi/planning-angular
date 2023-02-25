@@ -14,4 +14,8 @@ export class PlanningsService {
   getMyPlannings(): Observable<any> {
     return this.http.get<any>(`${URL}/myplannings`)
   }
+
+  getPlanningsShared(): Observable<any> {
+    return this.http.get<any>(`${URL}/planningsshared`)
+  }
 }

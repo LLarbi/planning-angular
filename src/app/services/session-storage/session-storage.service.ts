@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import {BehaviorSubject, Observable} from "rxjs";
 
 const USER_KEY = 'auth-user';
 @Injectable({
@@ -7,15 +7,25 @@ const USER_KEY = 'auth-user';
 })
 
 export class SessionStorageService {
-  constructor() {}
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
-  clean(): void {
-    window.sessionStorage.clear();
+  constructor() {
+      this.refresh()
   }
 
-  public saveUser(user: any): void {
+  isLoggedIn(): Observable<boolean> {
+    return this.isLoggedInSubject.asObservable();
+  }
+
+  saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    this.isLoggedInSubject.next(true);
+  }
+
+  logout(): void {
+    window.sessionStorage.clear();
+    this.isLoggedInSubject.next(false);
   }
 
   public getUser(): any {
@@ -27,12 +37,12 @@ export class SessionStorageService {
     return {};
   }
 
-  public isLoggedIn(): boolean {
+  refresh(): void {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      return true;
+      this.isLoggedInSubject.next(true);
+    } else {
+      this.isLoggedInSubject.next(false);
     }
-
-    return false;
   }
 }

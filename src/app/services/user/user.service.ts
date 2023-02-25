@@ -19,8 +19,11 @@ export class UserService {
   }
 
   searchUser(search: string): Observable<User[]> {
-    console.log(`${URL}/search/${search}`)
     return this.http.get<any>(`${URL}/search/${search}`);
+  }
+
+  validateUser(jwt: string | null): Observable<any> {
+    return this.http.post<any>(`${URL}/validate`, jwt);
   }
 
 }

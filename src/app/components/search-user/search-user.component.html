@@ -1,0 +1,19 @@
+
+<form (ngSubmit)="onSubmit()">
+
+
+<label>
+  Pseudo ou Email
+  <input type="search" [(ngModel)]="search" name="search">
+</label>
+<button type="submit">Recherche</button>
+  <div>
+    <div *ngFor="let user of users">
+        <label>
+          <img [src]="user.avatar" alt="{{ user.pseudo }}">
+          <h3>{{ user.pseudo }}</h3>
+          <input type="radio" [value]="user.id" [(ngModel)]="selectedUser" (ngModelChange)="onSelect()" name="selectedUser">
+        </label>
+    </div>
+  </div>
+</form>

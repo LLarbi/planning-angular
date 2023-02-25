@@ -20,6 +20,6 @@ export class NavbarComponent {
 
   logout(): void {
     this.sessionStorageService.logout();
-    this.router.navigate(["/"]);
+    this.router.navigate(["/login"]);
   }
 }

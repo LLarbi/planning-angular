@@ -13,6 +13,7 @@ import { HttpRequestInterceptor } from './Interceptor/http-request/http-request.
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { AvatarSelectComponent } from './components/avatar-select/avatar-select.component';
+import { PlanningsSharedComponent } from './pages/plannings-shared/plannings-shared.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AvatarSelectComponent } from './components/avatar-select/avatar-select.
     MyPlanningsComponent,
     NavbarComponent,
     InscriptionComponent,
-    AvatarSelectComponent
+    AvatarSelectComponent,
+    PlanningsSharedComponent
   ],
   imports: [
     BrowserModule,

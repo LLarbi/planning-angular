@@ -6,9 +6,9 @@ import {IsSignInGuard} from "./guards/is-sign-in.guard";
 
 
 const routes: Routes = [
-  { path: 'my-plannings', component: MyPlanningsComponent, canActivate: [ IsSignInGuard ]},
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: AuthComponent },
+  {path: 'my-plannings', component: MyPlanningsComponent, canActivate: [IsSignInGuard]},
+  {path: 'login', component: AuthComponent},
+  {path: '**', redirectTo: "/my-plannings"},
 ];
 
 @NgModule({

@@ -6,6 +6,7 @@ import {IsSignInGuard} from "./guards/is-sign-in.guard";
 import {InscriptionComponent} from "./pages/inscription/inscription.component";
 import {PlanningsSharedComponent} from "./pages/plannings-shared/plannings-shared.component";
 import {SharePlanningComponent} from "./pages/share-planning/share-planning.component";
+import {ValidateAccountComponent} from "./pages/validate-account/validate-account.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'share-planning', component: SharePlanningComponent, canActivate: [IsSignInGuard]},
   {path: 'login', component: AuthComponent},
   {path: 'inscription', component: InscriptionComponent},
+  {path: 'validate-account/:jwt', component: ValidateAccountComponent},
   {path: '**', redirectTo: "/my-plannings"},
 ];
 

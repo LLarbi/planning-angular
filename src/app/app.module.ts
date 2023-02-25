@@ -14,6 +14,7 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { AvatarSelectComponent } from './components/avatar-select/avatar-select.component';
 import { PlanningsSharedComponent } from './pages/plannings-shared/plannings-shared.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PlanningsSharedComponent } from './pages/plannings-shared/plannings-sha
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },

@@ -9,12 +9,14 @@ import {SharePlanningComponent} from "./pages/share-planning/share-planning.comp
 import {ValidateAccountComponent} from "./pages/validate-account/validate-account.component";
 import {LostPasswordComponent} from "./pages/lost-password/lost-password.component";
 import {ModifyPasswordComponent} from "./pages/modify-password/modify-password.component";
+import {MyProfileComponent} from "./pages/my-profile/my-profile.component";
 
 
 const routes: Routes = [
   {path: 'my-plannings', component: MyPlanningsComponent, canActivate: [IsSignInGuard]},
   {path: 'plannings-shared', component: PlanningsSharedComponent, canActivate: [IsSignInGuard]},
   {path: 'share-planning', component: SharePlanningComponent, canActivate: [IsSignInGuard]},
+  {path: 'my-profil', component: MyProfileComponent, canActivate: [IsSignInGuard]},
   {path: 'login', component: AuthComponent},
   {path: 'inscription', component: InscriptionComponent},
   {path: 'validate-account/:jwt', component: ValidateAccountComponent},

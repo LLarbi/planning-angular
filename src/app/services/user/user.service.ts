@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CreateUser} from "../../interface/create-user";
 import {User} from "../../interface/user";
+import {ModifyPassword} from "../../interface/modify-password";
 
 const URL = "http://localhost:8080/api/users"
 @Injectable({
@@ -23,7 +24,14 @@ export class UserService {
   }
 
   validateUser(jwt: string | null): Observable<any> {
-    return this.http.post<any>(`${URL}/validate`, jwt);
+    return this.http.patch<any>(`${URL}/validate`, jwt);
+  }
+
+  lostPassword(email: string ): Observable<any> {
+    return this.http.post<any>(`${URL}/lostpassword`, email);
+  }
+  modifyPassword(modifyPassword: ModifyPassword): Observable<any> {
+    return this.http.patch<any>(`${URL}/modifypassword`, modifyPassword)
   }
 
 }

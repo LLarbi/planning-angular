@@ -67,7 +67,6 @@ export class MyProfileComponent implements OnInit{
         complete: () => console.log("fini")});
   }
 
-
   editMode(field: string | null) {
     this.editSelected = field;
   }
@@ -80,14 +79,11 @@ export class MyProfileComponent implements OnInit{
       default:
         break;
     }
-
-
   }
 
   objectValuesNotNull() {
     this.buttonModify = Object.values(this.myNewProfile).every(val => val === null);
   }
-
 
   newFieldProfile($event: any) {
     this.myNewProfile = { ...this.myNewProfile, ...$event };

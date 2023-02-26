@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PlanningsService} from "../../services/plannings/plannings.service";
+import {Rights} from "../../enums/rights";
 
 @Component({
   selector: 'app-my-plannings',
@@ -10,10 +11,13 @@ export class MyPlanningsComponent implements OnInit {
 
 
   myPlannings: any;
+  Rights: any;
 
   constructor(
     private planningsService: PlanningsService
-  ) {}
+  ) {
+    this.Rights = Rights;
+  }
 
 
   ngOnInit() {

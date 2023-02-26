@@ -13,8 +13,8 @@ import { HttpRequestInterceptor } from './Interceptor/http-request/http-request.
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { AvatarSelectComponent } from './components/avatar-select/avatar-select.component';
-import { SharePlanningComponent } from './pages/share-planning/share-planning.component';
-import { PlanningsSharedComponent } from './pages/plannings-shared/plannings-shared.component';
+import { SharePlanningComponent } from './components/share-planning/share-planning.component';
+import { PlanningsSharedComponent } from './components/plannings-shared/plannings-shared.component';
 import { NgbModule, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { ValidateAccountComponent } from './pages/validate-account/validate-account.component';
@@ -22,6 +22,7 @@ import { LostPasswordComponent } from './pages/lost-password/lost-password.compo
 import { ModifyPasswordComponent } from './pages/modify-password/modify-password.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { EditableFieldComponent } from './components/editable-field/editable-field.component';
+import { PlanningSharingComponent } from './pages/planning-sharing/planning-sharing.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { EditableFieldComponent } from './components/editable-field/editable-fie
     LostPasswordComponent,
     ModifyPasswordComponent,
     MyProfileComponent,
-    EditableFieldComponent
+    EditableFieldComponent,
+    PlanningSharingComponent
   ],
   imports: [
     BrowserModule,

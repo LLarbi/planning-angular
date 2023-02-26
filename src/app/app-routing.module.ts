@@ -4,18 +4,16 @@ import {AuthComponent} from "./pages/auth/auth.component";
 import {MyPlanningsComponent} from "./pages/my-plannings/my-plannings.component";
 import {IsSignInGuard} from "./guards/is-sign-in.guard";
 import {InscriptionComponent} from "./pages/inscription/inscription.component";
-import {PlanningsSharedComponent} from "./pages/plannings-shared/plannings-shared.component";
-import {SharePlanningComponent} from "./pages/share-planning/share-planning.component";
 import {ValidateAccountComponent} from "./pages/validate-account/validate-account.component";
 import {LostPasswordComponent} from "./pages/lost-password/lost-password.component";
 import {ModifyPasswordComponent} from "./pages/modify-password/modify-password.component";
 import {MyProfileComponent} from "./pages/my-profile/my-profile.component";
+import {PlanningSharingComponent} from "./pages/planning-sharing/planning-sharing.component";
 
 
 const routes: Routes = [
   {path: 'my-plannings', component: MyPlanningsComponent, canActivate: [IsSignInGuard]},
-  {path: 'plannings-shared', component: PlanningsSharedComponent, canActivate: [IsSignInGuard]},
-  {path: 'share-planning', component: SharePlanningComponent, canActivate: [IsSignInGuard]},
+  {path: 'plannings-shared', component: PlanningSharingComponent, canActivate: [IsSignInGuard]},
   {path: 'my-profil', component: MyProfileComponent, canActivate: [IsSignInGuard]},
   {path: 'login', component: AuthComponent},
   {path: 'inscription', component: InscriptionComponent},

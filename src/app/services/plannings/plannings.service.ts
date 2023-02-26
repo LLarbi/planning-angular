@@ -23,4 +23,5 @@ export class PlanningsService {
   createLinkPlanning(linkPlanning: CreateLinkPlanning): Observable<any> {
     return this.http.post<any>( `${URL}`,linkPlanning)
   }
+
 }

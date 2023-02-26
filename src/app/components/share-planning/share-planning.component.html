@@ -1,0 +1,33 @@
+
+<div class="mon-container-toast">
+  <ngb-toast header="Succès" [autohide]="true" [delay]="5000" id="toast-succes" class="bg-success text-white" *ngIf="result">
+    <p>Le lien de votre planning avec {{result.user.pseudo}} a était ajouter</p>
+  </ngb-toast>
+
+  <ngb-toast header="Erreur" [autohide]="true" [delay]="5000" id="toast-erreur" class="bg-danger text-white" *ngIf="error">
+    <p>{{error.status}}</p>
+  </ngb-toast>
+</div>
+<div>
+<h3 class="my-2">Partager votre planning avec un utilisateur</h3>
+</div>
+<form (ngSubmit)="onSubmit()">
+
+  <app-search-user (select)="onSelectedUser($event)" ></app-search-user>
+
+  <div class="form-floating col-sm-6 col-12 m-auto">
+    <select class="form-select my-3"
+            id="floatingSelect"
+            [(ngModel)]="createUserPlanning.right"
+            name="createUserPlanning.right"
+            size="1"
+            required
+    >
+      <option *ngFor="let right of rights" [value]="right">{{ enumRights[right] }} du planning</option>
+    </select>
+    <label for="floatingSelect">Vous autorisez l'utilisateur à faire:</label>
+  </div>
+  <div class="col-sm-6 col-12 m-auto text-center">
+    <button type="submit" class="btn btn-primary">Création du lien</button>
+  </div>
+</form>

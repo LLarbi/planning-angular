@@ -1,0 +1,9 @@
+
+<h1>Les plannings partagées</h1>
+<a routerLink="/planning/{{planning.planning.id}}" *ngFor="let planning of planningShared">
+  <div>
+    <p>Nom du planning : {{planning.planning.name}}</p>
+    <p>Le droit : {{planning.right}}</p>
+    <p>Le pseudo de l'utilisateur : {{planning.user.pseudo}}</p>
+  </div>
+</a>

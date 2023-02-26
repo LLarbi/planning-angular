@@ -1,0 +1,23 @@
+<ng-container *ngIf="!(login$ |async)">
+  <header>
+    <nav>
+      <ul>
+        <li><a routerLink="/login">Connection</a></li>
+        <li><a routerLink="/inscription">Inscription</a></li>
+      </ul>
+    </nav>
+  </header>
+</ng-container>
+
+<ng-container *ngIf="login$|async">
+  <header>
+    <nav>
+      <ul>
+        <li><a routerLink="/my-plannings">Mes Plannings</a></li>
+        <li><a routerLink="/plannings-shared">Mon planning partager</a></li>
+        <li><a routerLink="/share-planning">Partager mon planning</a></li>
+        <li (click)="logout()">Déconnexions</li>
+      </ul>
+    </nav>
+  </header>
+</ng-container>

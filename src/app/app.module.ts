@@ -18,6 +18,8 @@ import { PlanningsSharedComponent } from './pages/plannings-shared/plannings-sha
 import { NgbModule, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { ValidateAccountComponent } from './pages/validate-account/validate-account.component';
+import { LostPasswordComponent } from './pages/lost-password/lost-password.component';
+import { ModifyPasswordComponent } from './pages/modify-password/modify-password.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { ValidateAccountComponent } from './pages/validate-account/validate-acco
     SharePlanningComponent,
     PlanningsSharedComponent,
     SearchUserComponent,
-    ValidateAccountComponent
+    ValidateAccountComponent,
+    LostPasswordComponent,
+    ModifyPasswordComponent
   ],
   imports: [
     BrowserModule,

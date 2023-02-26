@@ -4,9 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
-import { INITIAL_EVENTS, createEventId } from './event-utils';
-
-
+import {EventService} from "../../services/event/event.service";
 
 @Component({
   selector: 'app-calendar',
@@ -14,7 +12,6 @@ import { INITIAL_EVENTS, createEventId } from './event-utils';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit{
-  calendarVisible = true;
   calendarOptions: CalendarOptions = {
     plugins: [
       interactionPlugin,
@@ -28,15 +25,15 @@ export class CalendarComponent implements OnInit{
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
     initialView: 'dayGridMonth',
-    initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     weekends: true,
     editable: true,
     selectable: true,
     selectMirror: true,
-    dayMaxEvents: true,
-    select: this.handleDateSelect.bind(this),
-    eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this)
+    nowIndicator: true,
+    //select: this.handleDateSelect.bind(this),
+   // eventClick: this.handleEventClick.bind(this),
+    //eventsSet: this.handleEvents.bind(this),
+    //events:this.currentEvents
     /* you can update a remote database when these fire:
     eventAdd:
     eventChange:
@@ -44,26 +41,24 @@ export class CalendarComponent implements OnInit{
     */
   };
 
+  constructor(private eventService:EventService ,private changeDetector: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-
+    this.getAllEvents();
   }
 
-  currentEvents: EventApi[] = [];
-
-  constructor(private changeDetector: ChangeDetectorRef) {
+  getAllEvents():any{
+    console.log("test ici");
+    this.eventService.getAllEvents().subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.calendarOptions.events = data;
+    },
+      error: (error: string) => console.log(error),
+      complete: () => console.log("list events ok")});
   }
 
-  handleCalendarToggle() {
-    this.calendarVisible = !this.calendarVisible;
-  }
-
-  handleWeekendsToggle() {
-    const { calendarOptions } = this;
-    calendarOptions.weekends = !calendarOptions.weekends;
-  }
-
-  handleDateSelect(selectInfo: DateSelectArg) {
+ /* handleDateSelect(selectInfo: DateSelectArg) {
     const title = prompt('Please enter a new title for your event');
     const calendarApi = selectInfo.view.calendar;
 
@@ -78,9 +73,9 @@ export class CalendarComponent implements OnInit{
         allDay: selectInfo.allDay
       });
     }
-  }
+  }*/
 
-  handleEventClick(clickInfo: EventClickArg) {
+  /*handleEventClick(clickInfo: EventClickArg) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove();
     }
@@ -89,5 +84,5 @@ export class CalendarComponent implements OnInit{
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
     this.changeDetector.detectChanges();
-  }
+  }*/
 }

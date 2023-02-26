@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {CreateUser} from "../../interface/create-user";
 import {User} from "../../interface/user";
 import {ModifyPassword} from "../../interface/modify-password";
+import {ModifyUser} from "../../interface/modify-user";
 
 const URL = "http://localhost:8080/api/users"
 @Injectable({
@@ -31,7 +32,14 @@ export class UserService {
     return this.http.post<any>(`${URL}/lostpassword`, email);
   }
   modifyPassword(modifyPassword: ModifyPassword): Observable<any> {
-    return this.http.patch<any>(`${URL}/modifypassword`, modifyPassword)
+    return this.http.patch<any>(`${URL}/modifypassword`, modifyPassword);
   }
 
+  myProfile(): Observable<any> {
+    return this.http.get<any>(`${URL}/profile`);
+  }
+
+  modifyProfile(profile: ModifyUser): Observable<any> {
+    return this.http.patch<any>(`${URL}/modifyuser`, profile);
+  }
 }

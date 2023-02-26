@@ -20,6 +20,8 @@ import { SearchUserComponent } from './components/search-user/search-user.compon
 import { ValidateAccountComponent } from './pages/validate-account/validate-account.component';
 import { LostPasswordComponent } from './pages/lost-password/lost-password.component';
 import { ModifyPasswordComponent } from './pages/modify-password/modify-password.component';
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { EditableFieldComponent } from './components/editable-field/editable-field.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { ModifyPasswordComponent } from './pages/modify-password/modify-password
     SearchUserComponent,
     ValidateAccountComponent,
     LostPasswordComponent,
-    ModifyPasswordComponent
+    ModifyPasswordComponent,
+    MyProfileComponent,
+    EditableFieldComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col" (click)="editMode(true)">
+    <strong>{{ label }}</strong>
+  </div>
+  <div class="col" (click)="editMode(true)">
+        <span [ngClass]="{'text-decoration-line-through': value != null}">
+          {{ myProfil }}
+        </span>
+  </div>
+  <ng-container *ngIf="value != null">
+    <div class="col" (click)="editMode(false); deleteField()">
+      <span>{{ fieldModify === undefined ? value : fieldModify }} <i class="ri-eraser-line"></i></span>
+    </div>
+  </ng-container>
+</div>
+
+<ng-container *ngIf="editSelected">
+  <div class="row">
+    <div class="col">
+      <input
+        type="{{type}}"
+        [(ngModel)]="value"
+        name="value"
+        (keydown.enter)="editMode(false)"
+        (ngModelChange)="onSelect()"
+        *ngIf="type !== 'date'"
+        (blur)="editMode(false)"
+      >
+      <input
+        type="{{type}}"
+        [(ngModel)]="value"
+        name="value"
+        (keydown.enter)="editMode(false)"
+        (ngModelChange)="onSelect()"
+        (change)="editMode(false)"
+        *ngIf="type === 'date'"
+      >
+    </div>
+  </div>
+</ng-container>

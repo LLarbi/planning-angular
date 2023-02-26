@@ -1,12 +1,11 @@
 
 <h3>Votre planning est partagé avec</h3>
-
-
   <div class="d-flex flex-row flex-wrap justify-content-center">
     <div  *ngFor="let planning of planningShared" class="card width-200-px m-2 p-1" >
       <div class="card-body">
         <p class="card-title"> {{planning.user.pseudo}}</p>
         <p class="card-subtitle">{{ Rights[planning.right]}}</p>
+        <a (click)="deleteLinkPlanning(planning.user.id)" class="btn btn-outline-primary"><i class="ri-eraser-line"></i></a>
       </div>
     </div>
   </div>

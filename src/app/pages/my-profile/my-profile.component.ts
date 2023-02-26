@@ -76,9 +76,8 @@ export class MyProfileComponent implements OnInit{
       case 'avatar':
         this.myNewProfile.avatar = null;
         break;
-      default:
-        break;
     }
+    this.objectValuesNotNull();
   }
 
   objectValuesNotNull() {
@@ -91,9 +90,9 @@ export class MyProfileComponent implements OnInit{
   }
 
   onAvatarSelect($event: string) {
-     const avatar = { avatar : $event}
+    const avatar = { avatar : $event}
     this.myNewProfile = { ...this.myNewProfile, ...avatar };
-     this.editSelected = null;
-
+    this.editSelected = null;
+    this.objectValuesNotNull();
   }
 }

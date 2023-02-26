@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PlanningsService} from "../../services/plannings/plannings.service";
+import {Rights} from "../../enums/rights";
 
 @Component({
   selector: 'app-planning-shared',
@@ -7,11 +8,14 @@ import {PlanningsService} from "../../services/plannings/plannings.service";
   styleUrls: ['./plannings-shared.component.css']
 })
 export class PlanningsSharedComponent implements OnInit{
-    planningShared: any;
+  planningShared: any;
+  Rights: any;
 
   constructor(
     private planningsService: PlanningsService
-  ) {}
+  ) {
+    this.Rights = Rights;
+  }
 
   ngOnInit(): void {
     this.getAll();

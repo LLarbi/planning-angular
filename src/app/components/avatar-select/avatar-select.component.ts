@@ -12,7 +12,7 @@ export class AvatarSelectComponent implements OnInit{
   selectedAvatar!: string;
 
   ngOnInit(): void {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 4; i++) {
       this.randomNumbers.push(Math.random());
     }
   }

@@ -1,140 +1,132 @@
 
 <main class="container">
-<h1>Mon profil</h1>
-
-
-
-  <ng-container *ngIf="!buttonModify">
-    <button (click)="saveModifyProfile()">Valider la modification</button>
-  </ng-container>
-
-<div>
-  <div class="row">
-    <div class="col text-center">
-      <h2>Avatar</h2>
-    </div>
+  <div class="text-center my-3">
+    <h1>Mon profil</h1>
   </div>
-  <div class="row">
-    <div class="col text-center" (click)="editMode('avatar')" >
-      <img src="{{ myProfil.avatar }}" alt="Avatar de {{ myProfil.avatar }}">
+  <ng-container *ngIf="!buttonModify">
+    <button (click)="saveModifyProfile()" class="btn btn-success">Valider la modification</button>
+  </ng-container>
+  <div>
+    <div class="row">
+      <div class="col text-center">
+        <h2>Avatar</h2>
+      </div>
     </div>
-    <ng-container *ngIf="myNewProfile.avatar != null">
-      <div class="col" (click)="editMode('null'); deleteField('avatar')">
-        <img src="{{myNewProfile.avatar}}" alt="Nouveau avatar de {{ myProfil.avatar }}"><i class="ri-eraser-line"></i>
+    <div class="row">
+      <div class="col text-center" (click)="editMode('avatar')" >
+        <img src="{{ myProfil.avatar }}" alt="Avatar de {{ myProfil.avatar }}">
+      </div>
+      <ng-container *ngIf="myNewProfile.avatar != null">
+        <div class="col" (click)="editMode('null'); deleteField('avatar')">
+          <img src="{{myNewProfile.avatar}}" alt="Nouveau avatar de {{ myProfil.avatar }}"><i class="ri-eraser-line"></i>
+        </div>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="editSelected === 'avatar'">
+      <div class="row">
+        <div class="col">
+          <app-avatar-select (select)="onAvatarSelect($event)"></app-avatar-select>
+        </div>
       </div>
     </ng-container>
-
   </div>
-  <ng-container *ngIf="editSelected === 'avatar'">
+  <div class="my-3">
     <div class="row">
-      <div class="col">
-        <app-avatar-select (select)="onAvatarSelect($event)"></app-avatar-select>
+      <div class="col text-center">
+        <h2>Compte</h2>
       </div>
     </div>
-  </ng-container>
-</div>
-<div>
-  <div class="row">
-    <div class="col text-center">
-      <h2>Compte</h2>
-    </div>
+    <app-editable-field
+      label="Pseudo"
+      field="pseudo"
+      type="text"
+      [myProfil]="myProfil.pseudo"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Email"
+      field="email"
+      type="mail"
+      [myProfil]="myProfil.email"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Mot de passe"
+      field="password"
+      type="password"
+      fieldModify="********"
+      [myProfil]="myProfil.password"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
   </div>
-  <app-editable-field
-    label="Pseudo"
-    field="pseudo"
-    type="text"
-    [myProfil]="myProfil.pseudo"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-  <app-editable-field
-    label="Email"
-    field="email"
-    type="mail"
-    [myProfil]="myProfil.email"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-
-  <app-editable-field
-    label="Mot de passe"
-    field="password"
-    type="password"
-    fieldModify="********"
-    [myProfil]="myProfil.password"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-</div>
-
-
-<div>
-  <div class="row">
-    <div class="col text-center">
-      <h2>Info Personnelle</h2>
+  <div class="my-3">
+    <div class="row">
+      <div class="col text-center">
+        <h2>Info Personnelle</h2>
+      </div>
     </div>
+    <app-editable-field
+      label="Nom"
+      field="lastname"
+      type="text"
+      [myProfil]="myProfil.lastname"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Prénom"
+      field="firstname"
+      type="text"
+      [myProfil]="myProfil.firstname"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Date de naissance"
+      field="birthdate"
+      type="date"
+      [myProfil]="myProfil.birthdate"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Téléphone"
+      field="phone"
+      type="tel"
+      [myProfil]="myProfil.phone"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
   </div>
-  <app-editable-field
-    label="Nom"
-    field="lastname"
-    type="text"
-    [myProfil]="myProfil.lastname"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-  <app-editable-field
-    label="Prénom"
-    field="firstname"
-    type="text"
-    [myProfil]="myProfil.firstname"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-  <app-editable-field
-    label="Date de naissance"
-    field="birthdate"
-    type="date"
-    [myProfil]="myProfil.birthdate"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-  <app-editable-field
-    label="Téléphone"
-    field="phone"
-    type="tel"
-    [myProfil]="myProfil.phone"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-</div>
-
-<div>
-  <div class="row">
-    <div class="col text-center">
-      <h2>Adresse</h2>
+  <div class="my-3">
+    <div class="row">
+      <div class="col text-center">
+        <h2>Adresse</h2>
+      </div>
     </div>
+    <app-editable-field
+      label="Rue"
+      field="street"
+      type="text"
+      [myProfil]="myProfil.street"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Ville"
+      field="city"
+      type="text"
+      [myProfil]="myProfil.city"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Code postale"
+      field="zip"
+      type="text"
+      [myProfil]="myProfil.zip"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
+    <app-editable-field
+      label="Pays"
+      field="country"
+      type="text"
+      [myProfil]="myProfil.country"
+      (myNewProfilChange)="newFieldProfile($event)"
+    />
   </div>
-  <app-editable-field
-    label="Rue"
-    field="street"
-    type="text"
-    [myProfil]="myProfil.street"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-  <app-editable-field
-    label="Ville"
-    field="city"
-    type="text"
-    [myProfil]="myProfil.city"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-  <app-editable-field
-    label="Code postale"
-    field="zip"
-    type="text"
-    [myProfil]="myProfil.zip"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-  <app-editable-field
-    label="Pays"
-    field="country"
-    type="text"
-    [myProfil]="myProfil.country"
-    (myNewProfilChange)="newFieldProfile($event)"
-  />
-</div>
-
 </main>

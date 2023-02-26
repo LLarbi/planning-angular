@@ -2,23 +2,24 @@
   <div class="col-12 col-lg m-1" (click)="editMode(true)">
     <strong>{{ label }}</strong>
   </div>
-  <div class="col-12 col-lg m-1" (click)="editMode(true)">
+  <div class="col m-1" (click)="editMode(true)">
         <span [ngClass]="{'text-decoration-line-through': value != null}">
           {{ myProfil }}
         </span>
   </div>
   <ng-container *ngIf="value != null">
-    <div class="col-12 col-lg m-1" (click)="editMode(false); deleteField()">
+    <div class="col m-1" (click)="editMode(false); deleteField()">
       <span>{{ fieldModify === undefined ? value : fieldModify }} <i class="ri-eraser-line"></i></span>
     </div>
   </ng-container>
 </div>
 
 <ng-container *ngIf="editSelected">
-  <div class="row g-2">
+  <div class="row g-2 text-center">
     <div class="col-12 col-lg m-1">
       <input
         type="{{type}}"
+        placeholder="{{label}}"
         [(ngModel)]="value"
         name="value"
         (keydown.enter)="editMode(false)"

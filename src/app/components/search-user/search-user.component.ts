@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {User} from "../../interface/user";
 
@@ -7,7 +7,7 @@ import {User} from "../../interface/user";
   templateUrl: './search-user.component.html',
   styleUrls: ['./search-user.component.css']
 })
-export class SearchUserComponent {
+export class SearchUserComponent implements OnInit{
 
   users: User[] | undefined;
   search: string = "";
@@ -17,8 +17,11 @@ export class SearchUserComponent {
 
   constructor(
     private userService: UserService,
-
-  ) {
+  ) {}
+  ngOnInit() {
+    this.search = "";
+    this.users = undefined;
+    this.selectedUser = undefined;
   }
 
   onSubmit() {
@@ -29,7 +32,6 @@ export class SearchUserComponent {
         error: (error: string) => console.log(error),
         complete: () => console.log("fini")});
   }
-
 
   onSelect() {
     this.select.emit(String(this.selectedUser));

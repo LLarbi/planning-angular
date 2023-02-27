@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {PlanningsSharedComponent} from "../../components/plannings-shared/plannings-shared.component";
 
 @Component({
   selector: 'app-planning-sharing',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./planning-sharing.component.css']
 })
 export class PlanningSharingComponent {
-
+  @ViewChild(PlanningsSharedComponent) enfant: PlanningsSharedComponent | undefined;
+  onRefresh() {
+    this.enfant?.ngOnInit();
+  }
 }

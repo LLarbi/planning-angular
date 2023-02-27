@@ -4,7 +4,7 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnChanges,
+  OnChanges, OnInit,
   Output,
   SimpleChanges,
   ViewChild
@@ -15,7 +15,7 @@ import {
   templateUrl: './editable-field.component.html',
   styleUrls: ['./editable-field.component.css']
 })
-export class EditableFieldComponent{
+export class EditableFieldComponent implements OnInit{
   @Input() label: string | undefined;
   @Input() field: string = "" ;
   @Input() myProfil: string | undefined;
@@ -28,7 +28,12 @@ export class EditableFieldComponent{
 
   constructor() {}
 
-   editMode(b: boolean) {
+  ngOnInit() {
+    this.editSelected = false;
+    this.value = null;
+  }
+
+  editMode(b: boolean) {
     this.editSelected = b;
   }
 

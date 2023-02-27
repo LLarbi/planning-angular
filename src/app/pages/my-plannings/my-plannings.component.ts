@@ -9,7 +9,7 @@ import {Rights} from "../../enums/rights";
 })
 export class MyPlanningsComponent implements OnInit {
 
-
+  selectedPlanningId!: number;
   myPlannings: any;
   Rights: any;
 

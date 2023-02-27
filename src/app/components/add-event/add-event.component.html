@@ -7,7 +7,7 @@
 </div>
 <div class="modal-body">
   <p>Date sélectionnée: {{ date }}</p>
-  <form (ngSubmit)="addEvent()" #eventForm="ngForm">
+  <form (ngSubmit)="addEvent(+planningId)" #eventForm="ngForm">
     <div class="form-group">
       <label for="title">Titre</label>
       <input type="text" class="form-control" id="title" name="title" [(ngModel)]="event.title" required>

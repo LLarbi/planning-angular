@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {CalendarOptions, DateSelectArg, EventClickArg, EventApi} from '@fullcalendar/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -14,7 +14,8 @@ import {DetailsEventComponent} from "../details-event/details-event.component";
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit{
+export class CalendarComponent implements OnInit, OnChanges{
+  @Input() planningId!: number;
   calendarOptions: CalendarOptions = {
     plugins: [
       interactionPlugin,
@@ -35,27 +36,24 @@ export class CalendarComponent implements OnInit{
     nowIndicator: true,
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
-    //eventsSet: this.handleEvents.bind(this),
-    //events:this.currentEvents
-    /* you can update a remote database when these fire:
-    eventAdd:
-    eventChange:
-    eventRemove:
-    */
   };
 
   constructor(private eventService:EventService ,private changeDetector: ChangeDetectorRef, private modalService: NgbModal) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.planningId = changes['planningId'].currentValue;
+    this.ngOnInit();
+  }
   ngOnInit(): void {
-    this.getAllEvents();
+    this.getAllEvents(this.planningId);
   }
   handleDateSelect(selectInfo: DateSelectArg) {
     const modalRef = this.modalService.open(AddEventComponent, { centered: true });
     modalRef.componentInstance.date = selectInfo.start;
+    modalRef.componentInstance.planningId = this.planningId;
   }
-  getAllEvents():any{
-    console.log("test ici");
-    this.eventService.getAllEvents().subscribe({
+  getAllEvents(planningId:number):any{
+    this.eventService.getAllEvents(planningId).subscribe({
       next: (data: any) => {
         console.log(data);
         this.calendarOptions.events = data;
@@ -69,39 +67,9 @@ export class CalendarComponent implements OnInit{
         console.log(event);
         const modalRef = this.modalService.open(DetailsEventComponent, { centered: true });
         modalRef.componentInstance.event = event;
+        modalRef.componentInstance.planningId = this.planningId;
       },
       error: (error: string) => console.log(error),
       complete: () => console.log("get event by id ok")});
-
-      //console.log(clickInfo.event.id);
-      //clickInfo.event.remove();
   }
-
- /* handleDateSelect(selectInfo: DateSelectArg) {
-    const title = prompt('Please enter a new title for your event');
-    const calendarApi = selectInfo.view.calendar;
-
-    calendarApi.unselect(); // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      });
-    }
-  }*/
-
-  /*handleEventClick(clickInfo: EventClickArg) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove();
-    }
-  }
-
-  handleEvents(events: EventApi[]) {
-    this.currentEvents = events;
-    this.changeDetector.detectChanges();
-  }*/
 }

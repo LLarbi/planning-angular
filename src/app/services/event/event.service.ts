@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {Event} from "../../interface/event";
 
 
-const URL = "http://localhost:8080/api/planning/1";
+const URL = "http://localhost:8080/api/planning/";
 @Injectable({
   providedIn: 'root'
 })
@@ -12,24 +12,24 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  getAllEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${URL}/events`);
+  getAllEvents(planningId:number): Observable<Event[]> {
+    return this.http.get<Event[]>(`${URL}${planningId}/events`);
   }
 
-  addEvent(event: Event):Observable<any> {
-    return this.http.post<any>(`${URL}/events`, event);
+  addEvent(event: Event, planningId:number):Observable<any> {
+    return this.http.post<any>(`${URL}${planningId}/events`, event);
   }
 
   getEventById(id: number): Observable<Event> {
     return this.http.get<Event>(`http://localhost:8080/api/events/${id}`);
   }
 
-  editEvent(event: Event):Observable<Event> {
-    return this.http.put<Event>(`${URL}/events/${event.id}`, event);
+  editEvent(event: Event, planningId:number):Observable<Event> {
+    return this.http.put<Event>(`${URL}${planningId}/events/${event.id}`, event);
   }
 
-  deleteEvent(id: number): Observable<Event> {
-    return this.http.delete<Event>(`${URL}/events/${id}`);
+  deleteEvent(id: number, planningId:number): Observable<Event> {
+    return this.http.delete<Event>(`${URL}${planningId}/events/${id}`);
 
   }
 }

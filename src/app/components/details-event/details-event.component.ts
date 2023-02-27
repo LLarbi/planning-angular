@@ -29,4 +29,17 @@ export class DetailsEventComponent implements OnInit{
     this.modal.close();
     //this.router.navigate(['/my-plannings']);
   }
+
+  deleteEvent() {
+    if (confirm('Are you sure you want to delete this event ?')) {
+      // TODO: Supprimer l'événement avec this.event.id
+      this.eventService.deleteEvent(+this.event.id).subscribe({
+        next: (data: any) => {
+          console.log(data);
+        },
+        error: (error: string) => console.log(error),
+        complete: () => console.log("event deleted")});
+      this.modal.close();
+    }
+  }
 }

@@ -25,6 +25,7 @@
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-primary" [disabled]="!eventForm.form.valid">Edit</button>
+      <button type="button" class="btn btn-danger" (click)="deleteEvent()">Delete</button>
       <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Reset</button>
     </div>
   </form>

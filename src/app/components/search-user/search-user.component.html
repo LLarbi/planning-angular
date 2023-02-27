@@ -1,19 +1,20 @@
 
-<form (ngSubmit)="onSubmit()">
 
 
-<label>
-  Pseudo ou Email
-  <input type="search" [(ngModel)]="search" name="search">
-</label>
-<button type="submit">Recherche</button>
-  <div>
-    <div *ngFor="let user of users">
-        <label>
-          <img [src]="user.avatar" alt="{{ user.pseudo }}">
-          <h3>{{ user.pseudo }}</h3>
-          <input type="radio" [value]="user.id" [(ngModel)]="selectedUser" (ngModelChange)="onSelect()" name="selectedUser">
-        </label>
-    </div>
+
+  <div class="my-3 col-sm-6 col-12 m-auto">
+    <form (ngSubmit)="onSubmit()" class="d-flex">
+      <input type="search" placeholder="Pseudo ou Email" class="form-control me-2" [(ngModel)]="search" name="search">
+      <button type="submit" class="btn btn-primary">Recherche</button>
+    </form>
   </div>
-</form>
+
+  <div class="d-flex overflow-auto my-3">
+      <label *ngFor="let user of users" class="m-3">
+        <img src="{{user.avatar}}?size=100x100" alt="{{ user.pseudo }}">
+        <h3>{{ user.pseudo }}</h3>
+        <input type="radio" [value]="user.id" [(ngModel)]="selectedUser" (ngModelChange)="onSelect()" name="selectedUser">
+      </label>
+  </div>
+
+

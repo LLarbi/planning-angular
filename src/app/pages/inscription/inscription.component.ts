@@ -7,8 +7,7 @@ import {Router} from "@angular/router";
   templateUrl: './inscription.component.html',
   styleUrls: ['./inscription.component.css']
 })
-export class InscriptionComponent implements OnInit{
-
+export class InscriptionComponent {
   user: CreateUser = {
     pseudo: '',
     email: '',
@@ -28,10 +27,6 @@ export class InscriptionComponent implements OnInit{
     private userService: UserService,
     private router: Router
   ) { }
-
-  ngOnInit() {
-
-  }
 
   onSubmit() {
     this.userService.createUser(this.user).subscribe(

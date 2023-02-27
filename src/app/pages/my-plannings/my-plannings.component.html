@@ -1,6 +1,13 @@
-<a routerLink="/planning/{{planning.planning.id}}" *ngFor="let planning of myPlannings">
-  <div>
-    <p>Nom du planning : {{planning.planning.name}}</p>
-    <p>Le droit : {{planning.right}}</p>
+<main class="container text-center">
+  <div class="row col-12 my-2">
+    <h1>Mes plannings</h1>
   </div>
-</a>
+  <div class="d-flex flex-row">
+    <a routerLink="/planning/{{planning.planning.id}}" *ngFor="let planning of myPlannings" class="card flex-fill" >
+      <div class="card-body">
+        <p class="card-title">{{planning.planning.name}}</p>
+        <p class="card-subtitle">{{ Rights[planning.right]}}</p>
+      </div>
+    </a>
+  </div>
+</main>

@@ -1,0 +1,22 @@
+<div class="d-lg-flex flex-row d-none">
+  <div>
+    <p><i class="ri-add-line" class="add"></i></p>
+  </div>
+  <div class="d-flex flex-column justify-content-center p-1 m-1">
+    <form (ngSubmit)="onSubmit()">
+      <input [(ngModel)]="search" name="search" placeholder="Météo ville pays">
+    </form>
+
+    <div class="search bg-color d-flex flex-column m-1">
+      <a *ngFor="let geo of (geoLoc$| async)" (click)="chooseGeo(geo)" class="mx-3 my-1">
+        <p>{{ geo.name }} {{geo.flag}}</p>
+      </a>
+    </div>
+  </div>
+  <div class="max-vw-25 overflow-auto d-flex flex-row">
+    <div *ngFor="let weather of (listWeatherObservalble$ | async)" class="p-1 m-1">
+      <app-weather-info [weath] = weather ></app-weather-info>
+    </div>
+  </div>
+
+</div>

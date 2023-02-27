@@ -1,0 +1,18 @@
+.search {
+  float: left;
+  box-sizing: content-box;
+  z-index: 1;
+  position: absolute;
+  top: 75px;
+}
+
+.font-size {
+  font-size: 30px;
+}
+.bg-color {
+  background-color: gainsboro;
+}
+
+.max-vw-25 {
+  max-width: 45vw;
+}

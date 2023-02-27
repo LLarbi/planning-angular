@@ -27,6 +27,9 @@ import { PlanningSharingComponent } from './pages/planning-sharing/planning-shar
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { DetailsEventComponent } from './components/details-event/details-event.component';
+import {WeatherModule} from "./weather/weather.module";
+
+
 
 @NgModule({
   declarations: [
@@ -50,13 +53,14 @@ import { DetailsEventComponent } from './components/details-event/details-event.
     DetailsEventComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    NgbModule,
-    NgbToast,
-    FullCalendarModule
+      BrowserModule,
+      AppRoutingModule,
+      FormsModule,
+      HttpClientModule,
+      NgbModule,
+      NgbToast,
+      WeatherModule,
+      FullCalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },

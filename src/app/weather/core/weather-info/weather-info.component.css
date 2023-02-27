@@ -1,0 +1,16 @@
+.parentmeteo {
+  background-color: gainsboro;
+}
+
+.meteo {
+  font-size: 30px;
+}
+
+.info img {
+  height: 20px;
+  width: 20px;
+}
+
+.min-with-360-px {
+  min-width: 360px;
+}

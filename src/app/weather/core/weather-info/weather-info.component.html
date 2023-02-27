@@ -1,0 +1,19 @@
+
+<div class="parentmeteo d-flex flex-row rounded-1 shadow min-with-360-px">
+  <div class="meteo p-2">
+    <span>{{weath!.weather.weath.emoji}}</span>
+  </div>
+  <div class="d-flex flex-row">
+    <div class="d-flex flex-column p-2 info">
+      <span>{{weath!.weather.temperature}} °C</span>
+      <div class="d-lg-block d-none">
+        <img src="https://cdn-icons-png.flaticon.com/512/467/467262.png" style="transform: rotate({{weath!.weather.winddirection}}deg);">
+        <span> {{weath!.weather.windspeed}} km/h</span>
+      </div>
+    </div>
+    <div class="d-flex flex-column p-2">
+      <span>{{weath!.weather.weath.description}}</span>
+      <span>{{weath!.geo.name}} {{weath!.geo.flag}}</span>
+    </div>
+  </div>
+</div>

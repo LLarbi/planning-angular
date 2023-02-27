@@ -10,7 +10,6 @@ import {ModifyPasswordComponent} from "./pages/modify-password/modify-password.c
 import {MyProfileComponent} from "./pages/my-profile/my-profile.component";
 import {PlanningSharingComponent} from "./pages/planning-sharing/planning-sharing.component";
 
-
 const routes: Routes = [
   {path: 'my-plannings', component: MyPlanningsComponent, canActivate: [IsSignInGuard]},
   {path: 'plannings-shared', component: PlanningSharingComponent, canActivate: [IsSignInGuard]},

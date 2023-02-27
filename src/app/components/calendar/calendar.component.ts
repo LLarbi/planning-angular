@@ -1,10 +1,12 @@
 import {Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
+import {CalendarOptions, DateSelectArg, EventClickArg, EventApi} from '@fullcalendar/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import {EventService} from "../../services/event/event.service";
+import {AddEventComponent} from "../add-event/add-event.component";
 
 @Component({
   selector: 'app-calendar',
@@ -30,7 +32,7 @@ export class CalendarComponent implements OnInit{
     selectable: true,
     selectMirror: true,
     nowIndicator: true,
-    //select: this.handleDateSelect.bind(this),
+    select: this.handleDateSelect.bind(this),
    // eventClick: this.handleEventClick.bind(this),
     //eventsSet: this.handleEvents.bind(this),
     //events:this.currentEvents
@@ -41,12 +43,15 @@ export class CalendarComponent implements OnInit{
     */
   };
 
-  constructor(private eventService:EventService ,private changeDetector: ChangeDetectorRef) {}
+  constructor(private eventService:EventService ,private changeDetector: ChangeDetectorRef, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.getAllEvents();
   }
-
+  handleDateSelect(selectInfo: DateSelectArg) {
+    const modalRef = this.modalService.open(AddEventComponent, { centered: true });
+    modalRef.componentInstance.date = selectInfo.start;
+  }
   getAllEvents():any{
     console.log("test ici");
     this.eventService.getAllEvents().subscribe({

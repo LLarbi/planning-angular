@@ -22,6 +22,7 @@ import { ValidateAccountComponent } from './pages/validate-account/validate-acco
 import { LostPasswordComponent } from './pages/lost-password/lost-password.component';
 import { ModifyPasswordComponent } from './pages/modify-password/modify-password.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     ValidateAccountComponent,
     LostPasswordComponent,
     ModifyPasswordComponent,
-    CalendarComponent
+    CalendarComponent,
+    AddEventComponent
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,13 @@ export class MyPlanningsComponent implements OnInit {
   getMyPlanning() {
     this.planningsService.getMyPlannings().subscribe(
       {
-        next: (value: any) =>  this.myPlannings = value,
+        next: (value: any[]) => {
+          this.myPlannings = value;
+          const planning = value.filter(item => item.right === 'MAIN');
+          if (planning.length > 0) {
+            this.selectedPlanningId = planning.map(item => item.planning.id)[0];
+          }
+        },
         error: (error: string) => console.log(error),
         complete: () => console.log("fini")});
   }

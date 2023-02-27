@@ -23,4 +23,8 @@ export class EventService {
   getEventById(id: number): Observable<Event> {
     return this.http.get<Event>(`http://localhost:8080/api/events/${id}`);
   }
+
+  editEvent(event: Event):Observable<Event> {
+    return this.http.put<Event>(`${URL}/events/${event.id}`, event);
+  }
 }

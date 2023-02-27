@@ -7,6 +7,7 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import {EventService} from "../../services/event/event.service";
 import {AddEventComponent} from "../add-event/add-event.component";
+import {DetailsEventComponent} from "../details-event/details-event.component";
 
 @Component({
   selector: 'app-calendar',
@@ -64,8 +65,10 @@ export class CalendarComponent implements OnInit{
   }
   handleEventClick(clickInfo: EventClickArg) {
     this.eventService.getEventById(+clickInfo.event.id).subscribe({
-      next: (data: any) => {
-        console.log(data);
+      next: (event: any) => {
+        console.log(event);
+        const modalRef = this.modalService.open(DetailsEventComponent, { centered: true });
+        modalRef.componentInstance.event = event;
       },
       error: (error: string) => console.log(error),
       complete: () => console.log("get event by id ok")});

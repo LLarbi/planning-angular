@@ -23,6 +23,7 @@ import { LostPasswordComponent } from './pages/lost-password/lost-password.compo
 import { ModifyPasswordComponent } from './pages/modify-password/modify-password.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { DetailsEventComponent } from './components/details-event/details-event.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     LostPasswordComponent,
     ModifyPasswordComponent,
     CalendarComponent,
-    AddEventComponent
+    AddEventComponent,
+    DetailsEventComponent
   ],
   imports: [
     BrowserModule,

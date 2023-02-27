@@ -12,9 +12,7 @@
 <h3 class="my-2">Partager votre planning avec un utilisateur</h3>
 </div>
 <form (ngSubmit)="onSubmit()">
-
   <app-search-user (select)="onSelectedUser($event)" ></app-search-user>
-
   <div class="form-floating col-sm-6 col-12 m-auto">
     <select class="form-select my-3"
             id="floatingSelect"
@@ -28,6 +26,6 @@
     <label for="floatingSelect">Vous autorisez l'utilisateur à faire:</label>
   </div>
   <div class="col-sm-6 col-12 m-auto text-center">
-    <button type="submit" class="btn btn-primary">Création du lien</button>
+    <button type="submit" class="btn btn-outline-primary">Création du lien</button>
   </div>
 </form>

@@ -4,38 +4,45 @@
   </div>
   <div class="col m-1" (click)="editMode(true)">
         <span [ngClass]="{'text-decoration-line-through': value != null}">
-          {{ myProfil }}
+          <i class="ri-edit-line"></i> {{ myProfil }}
         </span>
   </div>
   <ng-container *ngIf="value != null">
     <div class="col m-1" (click)="editMode(false); deleteField()">
-      <span>{{ fieldModify === undefined ? value : fieldModify }} <i class="ri-eraser-line"></i></span>
+      <span><i class="ri-eraser-line"> {{ fieldModify === undefined ? value : fieldModify }}</i></span>
     </div>
   </ng-container>
 </div>
 
 <ng-container *ngIf="editSelected">
   <div class="row g-2 text-center">
-    <div class="col-12 col-lg m-1">
-      <input
-        type="{{type}}"
-        placeholder="{{label}}"
-        [(ngModel)]="value"
-        name="value"
-        (keydown.enter)="editMode(false)"
-        (ngModelChange)="onSelect()"
-        *ngIf="type !== 'date'"
-        (blur)="editMode(false)"
-      >
-      <input
-        type="{{type}}"
-        [(ngModel)]="value"
-        name="value"
-        (keydown.enter)="editMode(false)"
-        (ngModelChange)="onSelect()"
-        (change)="editMode(false)"
-        *ngIf="type === 'date'"
-      >
+    <div class="col-12 col-lg m-1 align-content-center justify-content-center">
+      <div class="row">
+        <input
+          class="form-control text-center offset-lg-3  col-lg col-12"
+          type="{{type}}"
+          placeholder="{{label}}"
+          [(ngModel)]="value"
+          name="value"
+          (keydown.enter)="editMode(false)"
+          (ngModelChange)="onSelect()"
+          *ngIf="type !== 'date'"
+          (blur)="editMode(false)"
+        >
+        <input
+          class="form-control text-center col-lg col-12"
+          type="{{type}}"
+          [(ngModel)]="value"
+          name="value"
+          (keydown.enter)="editMode(false)"
+          (ngModelChange)="onSelect()"
+          (change)="editMode(false)"
+          *ngIf="type === 'date'"
+        >
+        <button (click)="editMode(false)" class="col-lg col-12 btn btn-outline-primary m-2 p-2">Valider</button>
+        <div class="col-lg-3"></div>
+      </div>
     </div>
+
   </div>
 </ng-container>

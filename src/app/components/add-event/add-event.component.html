@@ -1,0 +1,32 @@
+<!-- myModalComponent HTML template -->
+<div class="modal-header">
+  <h4 class="modal-title">Add Event</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Date sélectionnée: {{ date }}</p>
+  <form (ngSubmit)="addEvent()" #eventForm="ngForm">
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="event.title" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea class="form-control" id="message" name="message" [(ngModel)]="event.message"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="start">Date et heure de début</label>
+      <input type="datetime-local" class="form-control" id="start" name="start" [(ngModel)]="event.start" required>
+    </div>
+    <div class="form-group">
+      <label for="end">Date et heure de fin</label>
+      <input type="datetime-local" class="form-control" id="end" name="end" [(ngModel)]="event.end" required>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="!eventForm.form.valid">Add</button>
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Reset</button>
+    </div>
+  </form>
+</div>

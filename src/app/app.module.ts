@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -23,7 +24,9 @@ import { ModifyPasswordComponent } from './pages/modify-password/modify-password
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { EditableFieldComponent } from './components/editable-field/editable-field.component';
 import { PlanningSharingComponent } from './pages/planning-sharing/planning-sharing.component';
-
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { DetailsEventComponent } from './components/details-event/details-event.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { PlanningSharingComponent } from './pages/planning-sharing/planning-shar
     ModifyPasswordComponent,
     MyProfileComponent,
     EditableFieldComponent,
-    PlanningSharingComponent
+    PlanningSharingComponent,
+    CalendarComponent,
+    AddEventComponent,
+    DetailsEventComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,8 @@ import { PlanningSharingComponent } from './pages/planning-sharing/planning-shar
     FormsModule,
     HttpClientModule,
     NgbModule,
-    NgbToast
+    NgbToast,
+    FullCalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },

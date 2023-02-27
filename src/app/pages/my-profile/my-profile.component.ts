@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {ModifyUser} from "../../interface/modify-user";
 import {Router} from "@angular/router";
+import {EditableFieldComponent} from "../../components/editable-field/editable-field.component";
 
 @Component({
   selector: 'app-my-profile',
@@ -11,7 +12,6 @@ import {Router} from "@angular/router";
 export class MyProfileComponent implements OnInit{
   myProfil: any;
   error: any;
-
   editSelected: string | null = "";
   buttonModify: boolean = true;
   myNewProfileNull: ModifyUser= {
@@ -30,27 +30,31 @@ export class MyProfileComponent implements OnInit{
     password: null,
   };
   myNewProfile: ModifyUser = this.myNewProfileNull;
-
-
   errorSave: any;
-  resultSave: any;
 
   constructor(
-    private userService:UserService,
-    private router: Router
-  ) {
+    private userService:UserService
+  ) {}
 
-  }
+  @ViewChildren(EditableFieldComponent) enfants: QueryList<EditableFieldComponent> | undefined;
 
   ngOnInit() {
-    this.getMyProfile()
+    this.editSelected = "";
+    this.buttonModify = true;
+    this.myNewProfile = this.myNewProfileNull
+    if (this.enfants){
+      this.enfants.forEach(enfant => {
+        enfant.ngOnInit();
+      });
+    }
+    this.getMyProfile();
   }
 
   saveModifyProfile() {
     this.userService.modifyProfile(this.myNewProfile).subscribe(
       {
         next: (value: any) => {
-          location.reload();
+          this.ngOnInit();
         },
         error: (error: any) => this.errorSave = error,
         complete: () => console.log("fini")});

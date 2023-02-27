@@ -6,7 +6,7 @@
   </button>
 </div>
 <div class="modal-body">
-  <form (ngSubmit)="editEvent()" #eventForm="ngForm">
+  <form (ngSubmit)="editEvent(+planningId)" #eventForm="ngForm">
     <div class="form-group">
       <label for="title">Titre</label>
       <input type="text" class="form-control" id="title" name="title" [(ngModel)]="event.title" required>
@@ -25,7 +25,7 @@
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-primary" [disabled]="!eventForm.form.valid">Edit</button>
-      <button type="button" class="btn btn-danger" (click)="deleteEvent()">Delete</button>
+      <button type="button" class="btn btn-danger" (click)="deleteEvent(+planningId)">Delete</button>
       <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Reset</button>
     </div>
   </form>

@@ -12,15 +12,16 @@ import {EventService} from "../../services/event/event.service";
 })
 export class DetailsEventComponent implements OnInit{
   @Input() event!: Event;
+  @Input() planningId!: number;
   constructor(public modal: NgbActiveModal, private eventService: EventService, private router: Router) {}
 
   ngOnInit() {
 
   }
 
-  editEvent() {
+  editEvent(planningId:number) {
     console.log(this.event);
-     this.eventService.editEvent(this.event).subscribe({
+     this.eventService.editEvent(this.event, planningId).subscribe({
        next: (data: any) => {
          console.log(data);
        },
@@ -30,10 +31,10 @@ export class DetailsEventComponent implements OnInit{
     //this.router.navigate(['/my-plannings']);
   }
 
-  deleteEvent() {
+  deleteEvent(planningId:number) {
     if (confirm('Are you sure you want to delete this event ?')) {
       // TODO: Supprimer l'événement avec this.event.id
-      this.eventService.deleteEvent(+this.event.id).subscribe({
+      this.eventService.deleteEvent(this.event.id, planningId).subscribe({
         next: (data: any) => {
           console.log(data);
         },

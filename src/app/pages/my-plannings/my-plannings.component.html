@@ -3,11 +3,14 @@
     <h1>Mes plannings</h1>
   </div>
   <div class="d-flex flex-row">
-    <a routerLink="/planning/{{planning.planning.id}}" *ngFor="let planning of myPlannings" class="card flex-fill" >
+    <a (click)="selectedPlanningId = planning.planning.id" *ngFor="let planning of myPlannings" class="card flex-fill" >
       <div class="card-body">
         <p class="card-title">{{planning.planning.name}}</p>
         <p class="card-subtitle">{{ Rights[planning.right]}}</p>
       </div>
     </a>
+  </div>
+  <div>
+    <app-calendar [planningId]="selectedPlanningId" ></app-calendar>
   </div>
 </main>

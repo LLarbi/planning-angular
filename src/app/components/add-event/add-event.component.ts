@@ -12,6 +12,7 @@ import {UserService} from "../../services/user/user.service";
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
+  @Input() planningId!: number;
   event: Event = {
     id: 0,
     title: '',
@@ -27,9 +28,9 @@ export class AddEventComponent implements OnInit {
     console.log(this.date);
   }
 
-  addEvent() {
+  addEvent(planningId:number) {
     console.log(this.event);
-    this.eventService.addEvent(this.event).subscribe({
+    this.eventService.addEvent(this.event, planningId).subscribe({
       next: (data: any) => {
         console.log(data);
       },

@@ -3,9 +3,6 @@
   <div class="text-center my-3">
     <h1>Mon profil</h1>
   </div>
-  <ng-container *ngIf="!buttonModify">
-    <button (click)="saveModifyProfile()" class="btn btn-success">Valider la modification</button>
-  </ng-container>
   <div>
     <div class="row">
       <div class="col text-center">
@@ -16,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col text-center" (click)="editMode('avatar')" >
-        <img src="{{ myProfil.avatar }}" alt="Avatar de {{ myProfil.avatar }}">
+        <img src="{{ myProfil.avatar }}" alt="Avatar de {{ myProfil.avatar }}"><i class="ri-edit-line"></i>
       </div>
       <ng-container *ngIf="myNewProfile.avatar != null">
         <div class="col" (click)="editMode('null'); deleteField('avatar')">
@@ -137,4 +134,9 @@
       (myNewProfilChange)="newFieldProfile($event)"
     />
   </div>
+  <ng-container *ngIf="!buttonModify">
+    <div class="d-flex justify-content-end w-100 sticky-bottom">
+      <button (click)="saveModifyProfile()" class="btn btn-success p-2">Valider la modification</button>
+    </div>
+  </ng-container>
 </main>

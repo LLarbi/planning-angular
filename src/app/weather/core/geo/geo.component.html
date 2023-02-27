@@ -2,9 +2,10 @@
   <div>
     <p><i class="ri-add-line" class="add"></i></p>
   </div>
-  <div class="d-flex flex-column justify-content-center p-1 m-1">
-    <form (ngSubmit)="onSubmit()">
-      <input [(ngModel)]="search" name="search" placeholder="Météo ville pays">
+  <div class="d-flex flex-column justify-content-center p-1 m-1 text-">
+    <form (ngSubmit)="onSubmit()" class="text-center">
+      <input [(ngModel)]="search" name="search" placeholder="Météo ville pays" class="form-control m-1 w-100">
+      <button type="submit" class="btn btn-outline-primary m-1 w-100">Recherche</button>
     </form>
 
     <div class="search bg-color d-flex flex-column m-1">

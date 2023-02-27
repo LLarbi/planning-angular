@@ -33,7 +33,6 @@ export class PlanningsSharedComponent implements OnInit{
     this.planningsService.deleteLinkPlanning(id).subscribe(
       {
         next: (value: any) => {
-          console.log(value)
           this.planningShared = this.planningShared.filter( (item: any) => item.user.id != id);
         },
         error: (error: string) => console.log(error),

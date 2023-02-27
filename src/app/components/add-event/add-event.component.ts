@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 import {Event} from "../../interface/event";
 import {EventService} from "../../services/event/event.service";
@@ -20,7 +21,7 @@ export class AddEventComponent implements OnInit {
   };
 
   @Input() date: Date | null = null;
-  constructor(public modal: NgbActiveModal, private eventService: EventService) {}
+  constructor(public modal: NgbActiveModal, private eventService: EventService, private router: Router) {}
 
   ngOnInit() {
     console.log(this.date);
@@ -34,6 +35,7 @@ export class AddEventComponent implements OnInit {
       },
       error: (error: string) => console.log(error),
       complete: () => console.log("add event ok")});
-    this.modal.close();
+      this.modal.close();
+      //this.router.navigate(['/my-plannings']);
   }
 }

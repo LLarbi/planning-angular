@@ -19,4 +19,8 @@ export class EventService {
   addEvent(event: Event):Observable<any> {
     return this.http.post<any>(`${URL}/events`, event);
   }
+
+  getEventById(id: number): Observable<Event> {
+    return this.http.get<Event>(`http://localhost:8080/api/events/${id}`);
+  }
 }

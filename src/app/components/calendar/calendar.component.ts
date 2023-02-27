@@ -33,7 +33,7 @@ export class CalendarComponent implements OnInit{
     selectMirror: true,
     nowIndicator: true,
     select: this.handleDateSelect.bind(this),
-   // eventClick: this.handleEventClick.bind(this),
+    eventClick: this.handleEventClick.bind(this),
     //eventsSet: this.handleEvents.bind(this),
     //events:this.currentEvents
     /* you can update a remote database when these fire:
@@ -61,6 +61,17 @@ export class CalendarComponent implements OnInit{
     },
       error: (error: string) => console.log(error),
       complete: () => console.log("list events ok")});
+  }
+  handleEventClick(clickInfo: EventClickArg) {
+    this.eventService.getEventById(+clickInfo.event.id).subscribe({
+      next: (data: any) => {
+        console.log(data);
+      },
+      error: (error: string) => console.log(error),
+      complete: () => console.log("get event by id ok")});
+
+      //console.log(clickInfo.event.id);
+      //clickInfo.event.remove();
   }
 
  /* handleDateSelect(selectInfo: DateSelectArg) {

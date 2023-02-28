@@ -23,10 +23,18 @@ export class CalendarComponent implements OnInit, OnChanges{
       timeGridPlugin,
       listPlugin,
     ],
+    locale:'fr',
     headerToolbar: {
-      left: 'prev,next today',
+      left: 'prev next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    },
+    buttonText:{
+      today: 'Aujourd\'hui',
+      month : 'Mois',
+      week: 'Semaine',
+      day: 'Jour',
+      list: 'Mes événements',
     },
     initialView: 'dayGridMonth',
     weekends: true,
@@ -49,7 +57,6 @@ export class CalendarComponent implements OnInit, OnChanges{
   }
   handleDateSelect(selectInfo: DateSelectArg) {
     const modalRef = this.modalService.open(AddEventComponent, { centered: true });
-    modalRef.componentInstance.date = selectInfo.start;
     modalRef.componentInstance.planningId = this.planningId;
   }
   getAllEvents(planningId:number):any{

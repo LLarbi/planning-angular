@@ -1,0 +1,147 @@
+<main class="container">
+  <div class="text-center my-5">
+  <h2>Inscription</h2>
+  </div>
+<form (ngSubmit)="onSubmit()">
+  <div class="row row-cols-lg-2 row-cols-1 g-3">
+    <div class="col">
+      <div class="text-center">
+        <h3>Compte</h3>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text"
+               class="form-control"
+               placeholder="Pseudo"
+               aria-label="Pseudo"
+               name="pseudo"
+               [(ngModel)]="user.pseudo"
+               required
+        >
+    </div>
+    <div class="input-group mb-3">
+      <input type="email"
+             class="form-control"
+             placeholder="Email"
+             aria-label="Email"
+             name="email"
+             [(ngModel)]="user.email"
+             required
+      >
+    </div>
+    <div class="input-group mb-3">
+      <input type="password"
+             class="form-control"
+             placeholder="Mot de passe"
+             aria-label="Mot de passe"
+             name="password"
+             [(ngModel)]="user.password"
+             required
+      >
+    </div>
+  </div>
+  <div class="col">
+    <div class="text-center">
+      <h3>Avatar</h3>
+    </div>
+    <app-avatar-select class="col" [(ngModel)]="user.avatar" (select)="onAvatarSelect($event)"></app-avatar-select>
+  </div>
+
+  <div class="col">
+    <div class="text-center">
+      <h3>Information Personnelle</h3>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text"
+             class="form-control"
+             placeholder="Nom de famille"
+             aria-label="Nom de famille"
+             aria-describedby="basic-addon1"
+             name="lastname"
+             [(ngModel)]="user.lastname"
+             required
+      >
+    </div>
+    <div class="input-group mb-3">
+      <input type="text"
+             class="form-control"
+             placeholder="Prénom"
+             aria-label="Prénom"
+             name="firstname"
+             [(ngModel)]="user.firstname"
+             required
+      >
+    </div>
+
+    <div class="input-group mb-3">
+      <input type="date"
+             class="form-control"
+             placeholder="Date de naissance"
+             aria-label="Date de naissance"
+             name="birthdate"
+             [(ngModel)]="user.birthdate"
+             required
+      >
+    </div>
+    <div class="input-group mb-3">
+      <input type="tel"
+             class="form-control"
+             placeholder="Téléphone"
+             aria-label="Téléphone"
+             name="phone"
+             [(ngModel)]="user.phone"
+             required
+      >
+    </div>
+  </div>
+  <div class="col">
+    <div class="text-center">
+      <h3>Adresse</h3>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text"
+             class="form-control"
+             placeholder="Rue"
+             aria-label="Rue"
+             name="street"
+             [(ngModel)]="user.street"
+             required
+      >
+    </div>
+    <div class="input-group mb-3">
+      <input type="text"
+             class="form-control"
+             placeholder="Ville"
+             aria-label="Ville"
+             name="city"
+             [(ngModel)]="user.city"
+             required
+      >
+    </div>
+    <div class="input-group mb-3">
+      <input type="text"
+             class="form-control"
+             placeholder="Pays"
+             aria-label="Pays"
+             name="country"
+             [(ngModel)]="user.country"
+             required
+      >
+    </div>
+    <div class="input-group mb-3">
+      <input type="text"
+             class="form-control"
+             placeholder="Code postal"
+             aria-label="Code postal"
+             name="zip"
+             [(ngModel)]="user.zip"
+             required
+      >
+    </div>
+  </div>
+  </div>
+  <div class="col-12 text-center">
+    <button type="submit" class="btn btn-outline-primary">Inscription</button>
+  </div>
+
+</form>
+</main>

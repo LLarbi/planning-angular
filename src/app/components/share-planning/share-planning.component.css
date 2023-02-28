@@ -1,0 +1,9 @@
+.mon-container-toast {
+  position: relative;
+}
+
+.mon-container-toast ngb-toast {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}

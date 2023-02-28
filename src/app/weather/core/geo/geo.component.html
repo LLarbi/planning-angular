@@ -1,0 +1,19 @@
+<div class="d-lg-flex flex-row d-none">
+  <div (click)="buttonAdd = !buttonAdd" class="d-flex justify-content-center add bg-color m-2 rounded-1 shadow">
+    <i class="ri-add-line font-size align-self-center"></i>
+  </div>
+  <div class="search bg-color rounded d-flex flex-column p-3 my-4 shadow" [ngClass]="{'d-none': !buttonAdd}">
+    <form (ngSubmit)="onSubmit()" class="text-center">
+      <input [(ngModel)]="search" name="search" placeholder="Météo ville pays" class="form-control m-1 w-100">
+      <button type="submit" class="btn btn-primary m-1 w-100">Recherche</button>
+    </form>
+    <a *ngFor="let geo of (geoLoc$| async)" (click)="chooseGeo(geo)" class="mx-3 my-1 bg-light shadow opacity-75 rounded text-center">
+      <p class="m-auto p-1">{{ geo.name }} {{geo.flag}}</p>
+    </a>
+  </div>
+  <div class="max-vw-25 overflow-auto d-flex flex-row">
+    <div *ngFor="let weather of (listWeatherObservalble$ | async)" class="p-1 m-1">
+      <app-weather-info [weath] = weather ></app-weather-info>
+    </div>
+  </div>
+</div>

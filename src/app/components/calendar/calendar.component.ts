@@ -58,6 +58,7 @@ export class CalendarComponent implements OnInit, OnChanges{
   handleDateSelect(selectInfo: DateSelectArg) {
     const modalRef = this.modalService.open(AddEventComponent, { centered: true });
     modalRef.componentInstance.planningId = this.planningId;
+
   }
   getAllEvents(planningId:number):any{
     this.eventService.getAllEvents(planningId).subscribe({

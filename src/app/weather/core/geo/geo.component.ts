@@ -20,6 +20,7 @@ export class GeoComponent implements OnInit{
   listWeather: Geoweather[] = [];
   listWeatherObservalble$!: Observable<Geoweather[]>;
   search: string = "";
+  buttonAdd: boolean = false;
 
   constructor(
     private geoService: GeoService,
@@ -69,6 +70,7 @@ export class GeoComponent implements OnInit{
 
     this.search = "";
     this.geoLoc$ = undefined;
+    this.buttonAdd = false;
   }
 
   getWeather(lon: number, lat: number): void {

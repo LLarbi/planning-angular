@@ -58,7 +58,9 @@ export class CalendarComponent implements OnInit, OnChanges{
   handleDateSelect(selectInfo: DateSelectArg) {
     const modalRef = this.modalService.open(AddEventComponent, { centered: true });
     modalRef.componentInstance.planningId = this.planningId;
-
+    modalRef.componentInstance.emitter.subscribe((saved:boolean) => {
+      this.ngOnInit();
+    });
   }
   getAllEvents(planningId:number):any{
     this.eventService.getAllEvents(planningId).subscribe({
@@ -76,6 +78,9 @@ export class CalendarComponent implements OnInit, OnChanges{
         const modalRef = this.modalService.open(DetailsEventComponent, { centered: true });
         modalRef.componentInstance.event = event;
         modalRef.componentInstance.planningId = this.planningId;
+        modalRef.componentInstance.emitter.subscribe((edit:boolean) => {
+          this.ngOnInit();
+        });
       },
       error: (error: string) => console.log(error),
       complete: () => console.log("get event by id ok")});

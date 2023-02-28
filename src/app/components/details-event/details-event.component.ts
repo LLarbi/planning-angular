@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ import {EventService} from "../../services/event/event.service";
 export class DetailsEventComponent implements OnInit{
   @Input() event!: Event;
   @Input() planningId!: number;
+  @Output() emitter = new EventEmitter<boolean>();
   constructor(public modal: NgbActiveModal, private eventService: EventService, private router: Router) {}
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class DetailsEventComponent implements OnInit{
      this.eventService.editEvent(this.event, planningId).subscribe({
        next: (data: any) => {
          console.log(data);
+         this.emitter.emit();
        },
        error: (error: string) => console.log(error),
        complete: () => console.log("edit event ok")});
@@ -37,6 +39,7 @@ export class DetailsEventComponent implements OnInit{
       this.eventService.deleteEvent(this.event.id, planningId).subscribe({
         next: (data: any) => {
           console.log(data);
+          this.emitter.emit();
         },
         error: (error: string) => console.log(error),
         complete: () => console.log("event deleted")});

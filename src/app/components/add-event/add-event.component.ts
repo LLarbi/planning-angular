@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ import {UserService} from "../../services/user/user.service";
 })
 export class AddEventComponent implements OnInit {
   @Input() planningId!: number;
+  @Output() emitter = new EventEmitter<boolean>();
   event: Event = {
     id: 0,
     title: '',
@@ -33,6 +34,7 @@ export class AddEventComponent implements OnInit {
     this.eventService.addEvent(this.event, planningId).subscribe({
       next: (data: any) => {
         console.log(data);
+        this.emitter.emit();
       },
       error: (error: string) => console.log(error),
       complete: () => console.log("add event ok")});

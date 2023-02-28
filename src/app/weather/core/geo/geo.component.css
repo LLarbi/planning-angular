@@ -9,8 +9,15 @@
 .font-size {
   font-size: 30px;
 }
+
 .bg-color {
   background-color: gainsboro;
+}
+
+.add {
+  height: 65px;
+  width: 65px;
+  cursor: pointer;
 }
 
 .max-vw-25 {
